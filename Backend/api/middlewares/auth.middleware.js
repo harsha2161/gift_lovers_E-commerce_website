@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
 import AppError from '../../shared/errors/AppError.js';
+import User from '../../modules/users/user.model.js';
 
-export default async function protect(req, res, next) {
+export async function protect(req, res, next) {
     
     let token;
 
@@ -20,6 +21,7 @@ export default async function protect(req, res, next) {
             algorithms: ['HS256']
         })
         console.log(decoded)
+        //req.user = await User.findById(decoded.id).select('-password') // save user data without passwords
         req.user = decoded
         next()    
     }catch (error) {
@@ -27,3 +29,12 @@ export default async function protect(req, res, next) {
         next()
     }
 }
+
+export function isAdmin(req, res, next){
+    if (req.user && req.user.role === "admin") {
+        next()
+    } else {
+        next(new AppError("Not authorized as an admin", 403))
+    }
+}
+
