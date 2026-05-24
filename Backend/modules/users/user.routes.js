@@ -6,8 +6,8 @@ import { userValidation } from "./user.validation.js";
 const UserRouter = express.Router()
 
 // Public Routes
-UserRouter.post("/login", loginUser)
-UserRouter.post("/google-login", loginWithGoogle)
+UserRouter.post("/login", loginUser) //  api/v1/users/login
+UserRouter.post("/google-login", loginWithGoogle)//  api/v1/users/google-login
 UserRouter.post("/register", userValidation, createUser)
 UserRouter.get("/me", protect, getUser)
 
