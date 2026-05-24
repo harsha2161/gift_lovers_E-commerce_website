@@ -47,7 +47,7 @@ export default function SignUp() {
         password: password,
       });
 
-      toast.success(response.data.message);
+      toast.success("Account Created Successfully");
       navigate("/login");
      
     } catch (err) {
