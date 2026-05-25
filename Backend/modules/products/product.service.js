@@ -10,14 +10,11 @@ export async function AddProduct(productsDetials){
 }
 
 export async function ViewProduct(user){
-   
-    if(user.role == "admin"){
+    if(user && user.role == "admin"){
         return await product.find()
-
-    }else if(user.role == "user"){
+    } else {
         return await product.find({isAvailable : true})
     }
-    
 }
 
 export async function DeleteProduct(productId){

@@ -18,17 +18,19 @@ export default function Header() {
 
   const token = localStorage.getItem("token")
 
-  useEffect(()=>{
-    axios.get(import.meta.env.VITE_BACKEND_URL+"/api/users/getuser",{
-      headers : {
-        Authorization : `Bearer ${token}`
-      }
-    }).then((response) => {
-      setUser(response.data)
+  useEffect(() => {
+    if (token) {
+      axios.get(import.meta.env.VITE_BACKEND_URL + "/api/v1/users/me", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => console.error("Error fetching user:", error));
     }
-  )
-
-  },[])
+  }, [token]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -67,7 +69,7 @@ export default function Header() {
           {/*Logo */}
           <div onClick={() => navigate("/")}
             className="">
-            <img src="logo1.jpg" className="h-[50px] rounded-full " alt="logo" />
+            <img src="logo.jpg" className="h-[50px] rounded-full " alt="logo" />
           </div>
 
           {/* Desktop Navigation */}
@@ -113,12 +115,13 @@ export default function Header() {
                 </button>
                 
                 <button 
-                         onClick={() => {
+                          onClick={() => {
+                          console.log(user.img)
                           navigate("/profile",{
                               state: user,
                             })
                   }}>
-                  <img src={user.img} alt="profile pic" className="rounded-full object-cover h-13 border-3 shadow" />
+                  <img src={user.img} alt="profile" className="rounded-full h-10 border" />
                      
                 </button>
 
