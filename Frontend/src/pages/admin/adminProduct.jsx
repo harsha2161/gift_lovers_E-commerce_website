@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Loading from "../../components/loading";
 
 export default function AdminProductPage() {
   const [product, setProduct] = useState([]);
@@ -9,9 +10,13 @@ export default function AdminProductPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+
+    const token = localStorage.getItem("token")
    
     if (isLoading == true) {
-      axios.get(import.meta.env.VITE_BACKEND_URL + "/api/v1/products/viewproducts").then((res) => {
+      axios.get(import.meta.env.VITE_BACKEND_URL + "/api/v1/products/viewproducts", {
+          headers: { Authorization: "Bearer " + token },
+          }).then((res) => {
        
         setProduct(res.data.data); 
         setIsLoading(false);
@@ -22,9 +27,7 @@ export default function AdminProductPage() {
   return (
     <div className="w-full h-full overflow-y-auto bg-gray-50 relative">
       {isLoading ? (
-        <div className="w-full h-full flex justify-center items-center">
-          <div className="w-[60px] h-[60px] border-t-[4px] border-blue-600 rounded-full animate-spin"></div>
-        </div>
+       <Loading/>
       ) : (
         <div className="overflow-x-auto h-full rounded-2xl">
           <table className="w-full text-sm text-left whitespace-nowrap">
@@ -53,10 +56,10 @@ export default function AdminProductPage() {
                         className="w-[80px] h-[80px] object-cover rounded-lg shadow-sm border border-gray-100"
                       />
                     </td>
-                    <td className="px-6 py-4 text-gray-600 font-medium">Rs. {item.lablePrice}</td>
+                    <td className="px-6 py-4 text-gray-600 font-medium">Rs. {item.labelPrice}</td>
                     <td className="px-6 py-4 text-gray-600">
                       <span className={`px-3 py-1 rounded-full text-xs font-bold ${item.stoke > 10 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                        {item.stoke}
+                        {item.stock}
                       </span>
                     </td>
                     <td className="px-6 py-4">
