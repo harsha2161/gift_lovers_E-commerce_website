@@ -1,4 +1,4 @@
-import  { CreateUser, DeleteUserByEmail, LoginUser, LoginWithGoogle, UpdateUserByEmail } from "./user.service.js";
+import  { CreateUser, DeleteUserByEmail, GetAllUsers, LoginUser, LoginWithGoogle, UpdateUserByEmail } from "./user.service.js";
 
 export async function createUser(req, res, next) {
     try {
@@ -31,7 +31,7 @@ export async function loginUser(req, res, next) {
 export async function viewUsers(req, res, next) {
     try {
         const users = await GetAllUsers();
-        res.status(200).json(users);
+        res.status(200).json({data: users});
     } catch (error) {
         next(error);
     }

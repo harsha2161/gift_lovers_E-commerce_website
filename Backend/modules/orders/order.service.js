@@ -66,6 +66,6 @@ export async function CreateOrder(orderInfo, orderUser) {
     return await newOrder.save()
 }
 
-export default async function GetOrder(){
+export  async function GetAllOrder(){
     return await Order.find()
 }

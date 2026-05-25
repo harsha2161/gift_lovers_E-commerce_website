@@ -12,7 +12,7 @@ UserRouter.post("/register", userValidation, createUser)
 UserRouter.get("/me", protect, getUser)
 
 // Admin Only Routes
-UserRouter.get("/", protect, isAdmin, viewUsers)
+UserRouter.get("/", protect,isAdmin, viewUsers)
 UserRouter.delete("/:email", protect, isAdmin, deleteUser)
 UserRouter.put("/:email", protect, isAdmin, blockUser)
 
