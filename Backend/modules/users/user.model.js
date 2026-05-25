@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     img:{
         type : String,
         required : true,
-        default : "https://pixabay.com/images/download/daweid-icon-7797704_1920.png"
+        default : "https://www.pinterest.com/pin/735634920368025450/"
     },
     isBlock:{
         type : Boolean,
