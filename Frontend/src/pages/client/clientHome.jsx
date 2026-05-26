@@ -12,9 +12,12 @@ export default function ClientHomePage() {
   const [products, setProducts] = useState([]);
 
   const slides = [
-    "https://i.pinimg.com/736x/c2/23/65/c223652535965ed48a327b027d62b834.jpg",
-    "https://i.pinimg.com/736x/e1/70/ee/e170eed6eea3ead73fb39ae4af4ddbfc.jpg",
-    "https://i.pinimg.com/736x/e4/a8/8e/e4a88e9224c520a8fd99848c946c1320.jpg"
+    // Beautiful succulent plant
+    "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?q=80&w=2074&auto=format&fit=crop",
+    // Cactus in a stylish pot
+    "https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=2072&auto=format&fit=crop",
+    // Assorted succulents collection
+    "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?q=80&w=2090&auto=format&fit=crop"
   ];
 
   useEffect(() => {
@@ -44,7 +47,7 @@ export default function ClientHomePage() {
   return (
     <div className="min-h-screen w-full flex flex-col font-sans bg-gray-50">
 
-      <div className="h-screen w-full overflow-hidden">
+      <div className="h-screen w-full overflow-hidden relative">
 
         {slides.map((slide, index) => (
           <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out 
@@ -55,53 +58,55 @@ export default function ClientHomePage() {
           </div>
         ))}
 
+        {/* Overlay to make text easily readable */}
+        <div className="absolute inset-0 bg-black/40 z-20"></div>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-50 px-4 text-center">
-            <span className="text-emerald-300 font-semibold text-sm mb-4">Curated With Care</span>
+          <span className="text-emerald-300 font-bold tracking-widest uppercase text-sm mb-4 bg-black/20 px-4 py-1 rounded-full backdrop-blur-sm border border-white/20">Curated With Care</span>
 
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-xl">Show your love <br /> with perfect gifts.</h1>
-          
-            <p className="text-lg md:text-2xl mb-10 max-w-2xl text-gray-200 drop-shadow-md">Discover our beautiful collection of meaningful gifts,
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">Show your love <br /> with perfect gifts.</h1>
+
+          <p className="text-lg md:text-2xl mb-10 max-w-2xl text-gray-200 drop-shadow-lg font-medium">Discover our beautiful collection of meaningful gifts,
             lovingly crafted to express your deepest affection.</p>
 
-            <Link to="/products" className="px-10 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-full hover:scale-105 
-            transition-all duration-200 text-lg">
+          <Link to="/products" className="px-10 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-full hover:scale-105 
+            transition-all duration-200 text-lg shadow-[0_0_20px_rgba(5,150,105,0.4)]">
             Shop Now
-            </Link>
+          </Link>
         </div>
 
 
-        </div>
+      </div>
 
       <div className="w-full bg-white py-16 px-6 border-b border-gray-100 relative z-30 -mt-8 rounded-t-[3rem] shadow-bgcolor2 ">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
 
-            <div className="flex flex-col items-center p-6">
-                <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 mb-6 shadow-sm">
-                  <FaShippingFast size={28} />
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Fast Delivery</h3>
-                <p className="text-gray-500">Express shipping options to get your gifts delivered exactly when you need them.</p>
+          <div className="flex flex-col items-center p-6">
+            <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 mb-6 shadow-sm">
+              <FaShippingFast size={28} />
             </div>
-
-            <div className="flex flex-col items-center p-6">
-              <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 mb-6 shadow-sm">
-                <FaGem size={28} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Premium Quality</h3>
-              <p className="text-gray-500">Every item is handpicked to ensure the highest quality standards for your loved ones.</p>
-            </div>
-
-            <div className="flex flex-col items-center p-6">
-              <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 mb-6 shadow-sm">
-                <FaRegCreditCard size={28} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Secure Payments</h3>
-              <p className="text-gray-500">Your transactions are encrypted and 100% secure with multiple payment gateways.</p>
-            </div>
-
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Fast Delivery</h3>
+            <p className="text-gray-500">Express shipping options to get your gifts delivered exactly when you need them.</p>
           </div>
+
+          <div className="flex flex-col items-center p-6">
+            <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 mb-6 shadow-sm">
+              <FaGem size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Premium Quality</h3>
+            <p className="text-gray-500">Every item is handpicked to ensure the highest quality standards for your loved ones.</p>
+          </div>
+
+          <div className="flex flex-col items-center p-6">
+            <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 mb-6 shadow-sm">
+              <FaRegCreditCard size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Secure Payments</h3>
+            <p className="text-gray-500">Your transactions are encrypted and 100% secure with multiple payment gateways.</p>
+          </div>
+
         </div>
+      </div>
 
       <div className="w-full py-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
@@ -117,7 +122,7 @@ export default function ClientHomePage() {
 
             <Link to="/products" className="mt-6 md:mt-0 px-6 py-3 border-2 border-emerald-600 text-emerald-600 
             font-semibold rounded-xl hover:bg-emerald-600 hover:text-white transition-colors duration-300">
-            View All Products
+              View All Products
             </Link>
           </div>
 
@@ -126,7 +131,7 @@ export default function ClientHomePage() {
             {isLoading ? (
 
               <div className="absolute">
-                <Loading/>
+                <Loading />
               </div>
 
             ) : products.length > 0 ? (
