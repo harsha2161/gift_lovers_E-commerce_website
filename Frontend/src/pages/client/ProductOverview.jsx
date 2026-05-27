@@ -30,7 +30,7 @@ export default function ProductOverviewPage() {
 
       }).catch((error) => {
 
-       // console.error(error);
+        // console.error(error);
         setStatus("error");
         toast.error("Error fetching product details");
       })
@@ -119,15 +119,9 @@ export default function ProductOverviewPage() {
 
           </div>
 
-          {/* Description Section */}
-          <div className="mb-8 prose prose-gray max-w-none">
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Product Description</h3>
-            <p className="text-gray-600 leading-relaxed text-[16px]">{product.description}</p>
-
-          </div>
-
+          {/* Description moved to bottom */}
           {/* Actions Section */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
 
             <button onClick={() => { addCart(product, 1); toast.success("Added to cart!"); }}
               className="flex-1 flex justify-center items-center gap-2 bg-white border-2 border-emerald-600 text-emerald-600
@@ -136,16 +130,17 @@ export default function ProductOverviewPage() {
 
             </button>
 
-            <button onClick={() => { navigate("/checkout", {
-                  state: {
-                    cart: [{
-                      productId: product.productId,
-                      productName: product.productName,
-                      img: product.img[0],
-                      lablePrice: product.lablePrice,
-                      qty: 1,
-                    }]
-                  }
+            <button onClick={() => {
+              navigate("/checkout", {
+                state: {
+                  cart: [{
+                    productId: product.productId,
+                    productName: product.productName,
+                    img: product.img[0],
+                    lablePrice: product.lablePrice,
+                    qty: 1,
+                  }]
+                }
               });
             }}
               className="flex-1 flex justify-center items-center gap-2 bg-emerald-600 text-white px-8 py-4 
@@ -157,25 +152,17 @@ export default function ProductOverviewPage() {
 
           </div>
 
-          {/* Trust Features */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 pt-8 border-t border-gray-100">
-            <div className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl">
-              <FaTruck className="text-2xl text-emerald-600 mb-2" />
-              <h4 className="text-sm font-bold text-gray-900">Free Shipping</h4>
-              <p className="text-xs text-gray-500 mt-1">On orders over Rs. 5000</p>
-            </div>
-            <div className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl">
-              <FaUndo className="text-2xl text-emerald-600 mb-2" />
-              <h4 className="text-sm font-bold text-gray-900">Easy Returns</h4>
-              <p className="text-xs text-gray-500 mt-1">30 days return policy</p>
-            </div>
-            <div className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl">
-              <FaShieldAlt className="text-2xl text-emerald-600 mb-2" />
-              <h4 className="text-sm font-bold text-gray-900">Secure Pay</h4>
-              <p className="text-xs text-gray-500 mt-1">100% secure checkout</p>
-            </div>
-          </div>
 
+        </div>
+      </div>
+
+      {/* Description Section - Bottom Middle */}
+      <div className="mt-20 w-full max-w-4xl mx-auto px-4">
+        <div className="bg-gray-50/50 rounded-3xl p-8 sm:p-12 text-center border border-gray-100 shadow-sm">
+          <h3 className="text-2xl font-black text-gray-900 mb-6 tracking-tight">Product Description</h3>
+          <p className="text-gray-600 leading-relaxed text-lg max-w-3xl mx-auto whitespace-pre-wrap">
+            {product.description}
+          </p>
         </div>
       </div>
     </div>
