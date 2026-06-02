@@ -20,7 +20,7 @@ import ClientPayment from "../pages/client/clientPayment";
 // Admin Pages
 import AdminDashboard from "../pages/admin/adminDashbourd";
 import AdminProductPage from "../pages/admin/adminProduct";
-import AdminReviewPage from "../pages/admin/adminreviews";
+// import AdminReviewPage from "../pages/admin/adminreviews";
 import { AdminOrder } from "../pages/admin/adminOrders";
 import { AdminUser } from "../pages/admin/adminUsers";
 import AddProductPage from "../pages/admin/addProductPage";
@@ -63,10 +63,10 @@ export const router = createBrowserRouter([
         path: "products",
         element: <AdminProductPage />
       },
-      {
-        path: "review",
-        element: <AdminReviewPage />
-      },
+      // {
+      //   path: "review",
+      //   element: <AdminReviewPage />
+      // },
       {
         path: "order",
         element: <AdminOrder />
