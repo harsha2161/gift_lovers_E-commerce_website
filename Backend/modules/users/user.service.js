@@ -96,3 +96,27 @@ export async function UpdateUserByEmail(email, updatingData) {
     return await User.updateOne({ email }, updatingData)
 }
 
+// Update User Profile with Password Verification
+export async function UpdateUserProfile(email, updateData, password) {
+    const user = await User.findOne({ email });
+    if (!user) throw new AppError("User not found", 404);
+
+    // If user logged in with Google, they don't have a normal password to verify.
+    // However, if they have a real password, verify it.
+    if (user.password !== "google") {
+        if (!password) {
+            throw new AppError("Password is required to update profile", 400);
+        }
+        const isPasswordCorrect = bcrypt.compareSync(password, user.password);
+        if (!isPasswordCorrect) throw new AppError("Invalid password", 401);
+    }
+
+    const { firstName, lastName, address, phoneNumber } = updateData;
+
+    if (firstName) user.firstName = firstName;
+    if (lastName) user.lastName = lastName;
+    if (address !== undefined) user.address = address;
+    if (phoneNumber !== undefined) user.phoneNumber = phoneNumber;
+
+    return await user.save();
+}

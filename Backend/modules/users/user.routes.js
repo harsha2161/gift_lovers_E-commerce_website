@@ -1,5 +1,5 @@
 import express from "express";
-import { blockUser, createUser, deleteUser, getUser, loginUser, loginWithGoogle, viewUsers } from "./user.controller.js";
+import { blockUser, createUser, deleteUser, getUser, loginUser, loginWithGoogle, viewUsers, updateProfile } from "./user.controller.js";
 import { isAdmin, protect } from "../../api/middlewares/auth.middleware.js"; 
 import { userValidation } from "./user.validation.js";
 
@@ -10,6 +10,7 @@ UserRouter.post("/login", loginUser) //  api/v1/users/login
 UserRouter.post("/google-login", loginWithGoogle)//  api/v1/users/google-login
 UserRouter.post("/register", userValidation, createUser)
 UserRouter.get("/me", protect, getUser)
+UserRouter.put("/update-profile", protect, updateProfile)
 
 // Admin Only Routes
 UserRouter.get("/", protect,isAdmin, viewUsers)

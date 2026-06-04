@@ -1,4 +1,5 @@
-import  { CreateUser, DeleteUserByEmail, GetAllUsers, LoginUser, LoginWithGoogle, UpdateUserByEmail } from "./user.service.js";
+import User from "./user.model.js";
+import { CreateUser, DeleteUserByEmail, GetAllUsers, LoginUser, LoginWithGoogle, UpdateUserByEmail, UpdateUserProfile } from "./user.service.js";
 
 export async function createUser(req, res, next) {
     try {
@@ -31,7 +32,7 @@ export async function loginUser(req, res, next) {
 export async function viewUsers(req, res, next) {
     try {
         const users = await GetAllUsers();
-        res.status(200).json({data: users});
+        res.status(200).json({ data: users });
     } catch (error) {
         next(error);
     }
@@ -55,9 +56,35 @@ export async function blockUser(req, res, next) {
     }
 }
 
-export function getUser(req, res) {
-    if (!req.user) {
-        return res.status(403).json({ message: "User not found or not logged in" });
+export async function getUser(req, res, next) {
+    try {
+        if (!req.user || !req.user.email) {
+            return res.status(403).json({ message: "User not found or not logged in" });
+        }
+        const user = await User.findOne({ email: req.user.email }).select('-password');
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        next(error);
     }
-    res.status(200).json(req.user);
+}
+
+export async function updateProfile(req, res, next) {
+    try {
+        if (!req.user || !req.user.email) {
+            return res.status(403).json({ message: "User not found or not logged in" });
+        }
+
+        const { password, ...updateData } = req.body;
+        const updatedUser = await UpdateUserProfile(req.user.email, updateData, password);
+
+        // Remove password before sending response
+        updatedUser.password = undefined;
+
+        res.status(200).json({ message: "Profile updated successfully", data: updatedUser });
+    } catch (error) {
+        next(error);
+    }
 }

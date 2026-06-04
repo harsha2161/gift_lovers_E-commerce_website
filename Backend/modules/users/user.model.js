@@ -33,6 +33,14 @@ const userSchema = new mongoose.Schema({
         type : Boolean,
         required: true,
         default : false,
+    },
+    address: {
+        type: String,
+        default: ""
+    },
+    phoneNumber: {
+        type: String,
+        default: ""
     }
 }, { timestamps: true }) // auto saved to databse user created time and date
 
