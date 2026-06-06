@@ -137,7 +137,7 @@ export default function ClientCart() {
                 <p className="text-xs text-gray-400 text-right mt-1">Inclusive of all taxes</p>
               </div>
 
-              <Link to="/payment" state={{ cart: cart }} className="block w-full">
+              <Link to="/checkout" state={{ cart: cart }} className="block w-full">
                 <button className="w-full flex items-center justify-center gap-2 bg-emerald-600 text-white py-4 rounded-xl 
                 font-bold text-lg hover:bg-emerald-700 hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Proceed to Checkout

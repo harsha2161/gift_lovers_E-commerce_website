@@ -8,6 +8,7 @@ import { IoLogIn, IoLogOut, IoSettings } from "react-icons/io5";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function Header() {
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
@@ -91,10 +92,7 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Logo */}
-          <div onClick={() => navigate("/")} className="cursor-pointer flex items-center justify-center">
-            <img src="logo.jpg" className="h-10 md:h-12 w-auto rounded-full shadow-sm hover:shadow-md transition-shadow" alt="Logo" />
-          </div>
+        
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 lg:gap-10">
@@ -102,6 +100,7 @@ export default function Header() {
               { name: 'Home', path: '/' },
               { name: 'Products', path: '/products' },
               { name: 'Contact Us', path: '/contacts' },
+              { name: 'About', path:'/#'},
             ].map((link) => (
               <Link
                 key={link.name}
@@ -165,7 +164,7 @@ export default function Header() {
                         </button>
 
                         <button
-                          onClick={() => { setIsProfileDropdownOpen(false); navigate("/settings"); }}
+                          onClick={() => { setIsProfileDropdownOpen(false); navigate("/#"); }}
                           className="w-full text-left px-4 py-2.5 text-sm text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 flex items-center gap-3 transition-colors"
                         >
                           <IoSettings className="text-gray-400 text-base" />
