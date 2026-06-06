@@ -30,6 +30,7 @@ import DeleteProduct from "../pages/admin/deleteProductPage";
 //states pages
 import PageNotFound from "../components/states/404 page not fount";
 import ClientProfile from "../pages/client/clientProfile";
+import ClientContact from "../pages/client/clientContact";
 
 export const router = createBrowserRouter([
   // Auth & Standalone routes
@@ -113,7 +114,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "contacts",
-        element: <h1>contacts</h1>
+        element: <ClientContact />
       },
       {
         path: "overview/:id",
