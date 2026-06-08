@@ -11,6 +11,7 @@ import ForgotPassword from "../pages/forgotPassword";
 
 // Client Pages
 import ClientHomePage from "../pages/client/clientHome";
+import ClientAboutPage from "../pages/client/clientAbout";
 import ClientProductPage from "../pages/client/clientProduct";
 import ProductOverviewPage from "../pages/client/ProductOverview";
 import ClientCart from "../pages/client/clientCart";
@@ -110,7 +111,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: <h1>about</h1>
+        element: <ClientAboutPage />
       },
       {
         path: "contacts",

@@ -100,7 +100,7 @@ export default function Header() {
               { name: 'Home', path: '/' },
               { name: 'Products', path: '/products' },
               { name: 'Contact Us', path: '/contacts' },
-              { name: 'About', path:'/#'},
+              { name: 'About', path:'/about'},
             ].map((link) => (
               <Link
                 key={link.name}

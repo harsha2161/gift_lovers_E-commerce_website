@@ -7,6 +7,8 @@ import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 export default function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -64,7 +66,7 @@ export default function SignUp() {
 
       <div className="w-full max-w-md mx-4 p-8 backdrop-blur-xl bg-white/95 border border-white/20 rounded-3xl shadow-2xl relative z-10">
 
-        <div className="text-center mb-6">
+        <div className="text-center mb-8">
           <h1 className="text-3xl font-black text-gray-900 tracking-tight flex justify-center items-center gap-1 mb-2 cursor-pointer" onClick={() => navigate("/")}>
             Gift<span className="text-emerald-600">Lovers</span>
             <span className="w-2 h-2 rounded-full bg-emerald-500 mb-1 ml-1"></span>
@@ -105,7 +107,7 @@ export default function SignUp() {
             </div>
           </div>
 
-          {/* Email */}
+          {/* Adress */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <FaEnvelope className="text-gray-400" />
@@ -113,8 +115,34 @@ export default function SignUp() {
             <input
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              type="email"
+              type="Address"
               placeholder="Email Address"
+              className="w-full h-12 pl-11 pr-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
+            />
+          </div>
+
+           <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <FaEnvelope className="text-gray-400" />
+            </div>
+            <input
+              onChange={(e) => setAddress(e.target.value)}
+              value={address}
+              type="text"
+              placeholder="Address"
+              className="w-full h-12 pl-11 pr-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
+            />
+          </div>
+
+           <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <FaEnvelope className="text-gray-400" />
+            </div>
+            <input
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              value={phoneNumber}
+              type="number"
+              placeholder="Phone number"
               className="w-full h-12 pl-11 pr-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
             />
           </div>
