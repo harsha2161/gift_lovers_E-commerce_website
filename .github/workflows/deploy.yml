@@ -12,17 +12,19 @@ jobs:
     steps:
       - name: Deploy to AWS EC2
         uses: appleboy/ssh-action@v1.2.2
-
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
+            set -e
+
             cd /home/ubuntu/gift_lovers_E-commerce_website
 
             echo "Pulling latest code..."
-            git pull origin main
+            git fetch origin main
+            git reset --hard origin/main
 
             echo "Updating Backend..."
             cd Backend
@@ -36,4 +38,4 @@ jobs:
             npm install
             npm run build
 
-            echo "Deployment completed!"
+            echo "Deployment completed successfully!"
