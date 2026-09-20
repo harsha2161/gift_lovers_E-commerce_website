@@ -1,4 +1,4 @@
-name: Deploy Backend
+name: Deploy Gift Lovers
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to EC2
+      - name: Deploy to AWS EC2
         uses: appleboy/ssh-action@v1.2.2
 
         with:
@@ -19,10 +19,21 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            cd /home/ubuntu/gift-lovers-backend
+            cd /home/ubuntu/gift_lovers_E-commerce_website
 
+            echo "Pulling latest code..."
             git pull origin main
 
+            echo "Updating Backend..."
+            cd Backend
             npm install
 
+            echo "Restarting Backend..."
             pm2 restart gift-lovers-backend
+
+            echo "Updating Frontend..."
+            cd ../Frontend
+            npm install
+            npm run build
+
+            echo "Deployment completed!"
