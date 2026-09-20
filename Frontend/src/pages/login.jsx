@@ -75,7 +75,7 @@ export default function LogIn() {
             <div className="w-full max-w-md mx-4 p-8 backdrop-blur-xl bg-white/95 border border-white/20 rounded-3xl shadow-2xl relative z-10">
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-black text-gray-900 tracking-tight flex justify-center items-center gap-1 mb-2 cursor-pointer" onClick={() => navigate("/")}>
-                        Gift<span className="text-emerald-600">loversssssssltest</span>
+                        Gift<span className="text-emerald-600">lovsltest</span>
                         <span className="w-2 h-2 rounded-full bg-emerald-500 mb-1 ml-1"></span>
                     </h1>
                     <h2 className="text-xl font-bold text-gray-800">Welcome Back</h2>
