@@ -78,7 +78,7 @@ export default function LogIn() {
                         Gift<span className="text-emerald-600">lovers</span>
                         <span className="w-2 h-2 rounded-full bg-emerald-500 mb-1 ml-1"></span>
                     </h1>
-                    <h2 className="text-xl font-bold text-gray-800">Welcome Back</h2>
+                    <h2 className="text-xl font-bold text-gray-800">Welcome </h2>
                     <p className="text-gray-500 text-sm mt-1">Please enter your details to sign in.</p>
                 </div>
 
